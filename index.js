@@ -45,15 +45,12 @@ app.get('/services/:id', async (req, res) => {
     res.send(service);
 })
 
-//reviews according to services
-// app.get('/allReviews', async(req,res) =>{
-//     let query = {};
-//     if(req.query.service){
-//         query = {
-//             service: req.query.service
-//         }
-//     }
-// })
+//service create
+app.post('/services', async (req, res) => {
+    const service = req.body;
+    const result = await serviceCollection.insertOne(service);
+    res.send(result);
+})
 
 //review api
 app.get('/reviews', async(req,res) =>{
