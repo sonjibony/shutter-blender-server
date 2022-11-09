@@ -45,15 +45,37 @@ app.get('/services/:id', async (req, res) => {
     res.send(service);
 })
 
+//reviews according to services
+// app.get('/allReviews', async(req,res) =>{
+//     let query = {};
+//     if(req.query.service){
+//         query = {
+//             service: req.query.service
+//         }
+//     }
+// })
 
 //review api
 app.get('/reviews', async(req,res) =>{
     let query = {};
-    if(req.query.email){
-        query = {
+    // if(req.query.email){
+    //     query = {
+    //         email: req.query.email
+    //     } 
+         if (req.query.email) {
+           query ={
             email: req.query.email
+           } 
+        } 
+        else if ( req.query.service){
+            query = {
+                service: req.query.service
+            }
         }
-    }
+            
+        
+        
+    
 
     const cursor = reviewCollection.find(query);
     const reviews = await cursor.toArray();
