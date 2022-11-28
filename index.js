@@ -110,7 +110,7 @@ async function run() {
       res.send(allReviews);
     });
 
-    // my review api
+    // my review api sending to client
     app.get("/reviews", verifyJWT, async (req, res) => {
       // console.log(req.headers.authorization);
       const decoded = req.decoded;
